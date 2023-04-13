@@ -36,6 +36,8 @@ public class User {
 	Set<Role> roles = new HashSet<Role>();
 	
 	private int otp;
+	
+	private boolean isActive;
 	public int getId() {
 		return id;
 	}
@@ -83,6 +85,14 @@ public class User {
 
 	public void setOtp(int otp) {
 		this.otp = otp;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 	
 	

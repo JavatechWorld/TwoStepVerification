@@ -71,7 +71,7 @@ public class DefaultUserServiceImpl implements DefaultUserService{
 			user.setOtp(randomPIN);
 			userRepo.save(user);
 			SimpleMailMessage msg = new SimpleMailMessage();
-			msg.setFrom("");
+			msg.setFrom("");// input the senders email ID 
 			msg.setTo(user.getEmail());
 
 			msg.setSubject("Welcome To My Channel");

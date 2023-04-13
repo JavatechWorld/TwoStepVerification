@@ -54,8 +54,11 @@ public class LoginController {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		UserDetails user = (UserDetails) securityContext.getAuthentication().getPrincipal();
 		User users = userRepo.findByEmail(user.getUsername());
-		if(users.getOtp() == userLoginDTO.getOtp())
+		if(users.getOtp() == userLoginDTO.getOtp()) {
+			users.setActive(true);
+		userRepo.save(users);
 		return "redirect:/dashboard";
+		}
 		else
 			return "redirect:/login/otpVerification?error";
 	}

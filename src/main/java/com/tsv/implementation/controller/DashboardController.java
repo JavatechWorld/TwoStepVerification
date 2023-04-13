@@ -23,8 +23,12 @@ public class DashboardController {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		UserDetails user = (UserDetails) securityContext.getAuthentication().getPrincipal();
 		User users = userRepo.findByEmail(user.getUsername());
+		if(users.isActive()) {
 		model.addAttribute("userDetails", users.getName());
         return "dashboard";
+		}else {
+			return "redirect:/login/otpVerification?error";
+		}
     }
 
 }
