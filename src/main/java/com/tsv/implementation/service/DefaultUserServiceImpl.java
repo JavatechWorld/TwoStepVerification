@@ -69,6 +69,7 @@ public class DefaultUserServiceImpl implements DefaultUserService{
 		try {
 			int randomPIN = (int) (Math.random() * 9000) + 1000;
 			user.setOtp(randomPIN);
+			user.setActive(false);
 			userRepo.save(user);
 			SimpleMailMessage msg = new SimpleMailMessage();
 			msg.setFrom("");// input the senders email ID 
